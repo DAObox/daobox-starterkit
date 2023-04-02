@@ -3,14 +3,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Sidebar } from "./Sidebar";
 
-export function MobileSidebar({ props }: any) {
-  const { sidebarOpen, setSidebarOpen } = props;
+export function MobileSidebar(props: any) {
   return (
-    <Transition.Root show={sidebarOpen} as={Fragment}>
+    <Transition.Root show={props.sidebarOpen} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50 lg:hidden"
-        onClose={setSidebarOpen}
+        onClose={props.setSidebarOpen}
       >
         <Transition.Child
           as={Fragment}
@@ -48,7 +47,7 @@ export function MobileSidebar({ props }: any) {
                   <button
                     type="button"
                     className="-m-2.5 p-2.5"
-                    onClick={() => setSidebarOpen(false)}
+                    onClick={() => props.setSidebarOpen(false)}
                   >
                     <span className="sr-only">Close sidebar</span>
                     <XMarkIcon
