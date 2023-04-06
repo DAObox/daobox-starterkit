@@ -1,5 +1,6 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from "react";
-import { CategoryBar, ProgressBar, Text, Title } from "@tremor/react";
+import React from "react";
+import { useRouter } from "next/router";
+import { CategoryBar, Text, Title } from "@tremor/react";
 import { ProposalStatus } from "@aragon/sdk-client";
 import { VoteStatusBadge } from "./VoteStatusBadge";
 import { Card } from "../common/Card";
@@ -11,6 +12,7 @@ interface Results {
 }
 
 interface VoteCardProps {
+  id: string;
   title: string;
   description: string;
   startDate: Date;
@@ -20,6 +22,7 @@ interface VoteCardProps {
 }
 
 export const VoteCard: React.FC<VoteCardProps> = ({
+  id,
   title,
   description,
   startDate,
@@ -27,7 +30,7 @@ export const VoteCard: React.FC<VoteCardProps> = ({
   status,
   results,
 }) => (
-  <Card hoverable pressable className="-z-10 hover:cursor-pointer">
+  <Card hoverable pressable className="-z-10">
     <div className="flex justify-between pb-4">
       <Title>{title}</Title>
       <VoteStatusBadge

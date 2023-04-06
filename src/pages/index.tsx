@@ -11,7 +11,6 @@ const Index = () => {
       rightColumn={
         <>
           <TokenDistribution />
-
           <Skeleton height="lg" animated={false} />
         </>
       }

@@ -11,7 +11,7 @@ export function DaoHeader() {
   if (!data) return <Skeleton height="s" animated={true} />;
 
   return (
-    <section aria-labelledby="profile-overview-title">
+    <section className="pb-6" aria-labelledby="profile-overview-title">
       <div className="overflow-hidden rounded-lg bg-white shadow p-6">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Avatar size="lg" img={ipfsUriToUrl(data.metadata.avatar)}>
