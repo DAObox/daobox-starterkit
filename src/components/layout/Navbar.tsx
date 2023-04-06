@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
 
 export function Navbar() {
   return (
@@ -15,13 +16,13 @@ export function Navbar() {
 export function Logo() {
   return (
     <div className=" left-0 flex-shrink-0 py-5 lg:static">
-      <a href="/">
+      <Link href="/">
         <img
           className="h-8 w-auto"
           src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=200"
           alt=""
         />
-      </a>
+      </Link>
     </div>
   );
 }

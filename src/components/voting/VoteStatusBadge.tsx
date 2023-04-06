@@ -17,7 +17,7 @@ export function VoteStatusBadge({
       : status;
 
   return (
-    <Badge icon={icon} size="xs" color={badgeColor}>
+    <Badge icon={icon} size="xs" color={badgeColor as any}>
       {text}
     </Badge>
   );
