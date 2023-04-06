@@ -6,7 +6,7 @@ import { WagmiConfig } from "wagmi";
 import "../styles/globals.css";
 import { AragonProvider } from "@daobox/use-aragon";
 import { chains, client } from "../wagmi";
-import { Appshell } from "../components/layout/AppShell";
+import AppShell from "../components/layout/AppShell";
 
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false);
@@ -16,9 +16,9 @@ function App({ Component, pageProps }: AppProps) {
       <RainbowKitProvider chains={chains} showRecentTransactions={true}>
         <AragonProvider>
           {mounted && (
-            <Appshell>
+            <AppShell>
               <Component {...pageProps} />
-            </Appshell>
+            </AppShell>
           )}
         </AragonProvider>
       </RainbowKitProvider>

@@ -1,12 +1,25 @@
 import React from "react";
-import { Card } from "@tremor/react";
+import { Layout } from "../components/Layout";
+import { Skeleton } from "../components/Skeleton";
+import { DaoHeader } from "../components/DaoHeader";
+import { VotePannel } from "../components/voting/VoteControls";
+import { TokenDistribution } from "../components/charts/TokenDistribution";
 
-const index = () => {
+const Index = () => {
   return (
-    <>
-      <Card>DASHBOARD</Card>
-    </>
+    <Layout
+      rightColumn={
+        <>
+          <TokenDistribution />
+          <Skeleton height="lg" animated={false} />
+        </>
+      }
+    >
+      <DaoHeader />
+
+      <VotePannel />
+    </Layout>
   );
 };
 
-export default index;
+export default Index;
