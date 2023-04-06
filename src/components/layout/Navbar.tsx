@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export function Navbar() {
   return (
-    <header className="bg-gradient-to-r from-sky-800 to-cyan-600 pb-24">
-      <div className="relative flex flex-wrap items-center justify-between mx-auto  max-w-7xl px-8">
+    <header className="pb-24 bg-gradient-to-r from-sky-800 to-cyan-600">
+      <div className="relative flex flex-wrap items-center justify-between px-8 mx-auto max-w-7xl">
         <Logo />
         <ConnectButton />
         <div className="w-full py-4 border-white border-opacity-20" />
@@ -15,10 +15,10 @@ export function Navbar() {
 
 export function Logo() {
   return (
-    <div className=" left-0 flex-shrink-0 py-5 lg:static">
+    <div className="left-0 flex-shrink-0 py-5  lg:static">
       <Link href="/">
         <img
-          className="h-8 w-auto"
+          className="w-auto h-8"
           src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=200"
           alt=""
         />

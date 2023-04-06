@@ -34,6 +34,7 @@ export const Dropdown = <T,>({
           value={option.value as unknown as string}
           text={option.text}
           key={index}
+          className="dark:!bg-gray-700 dark:text-white"
         />
       ))}
     </Dropdown_>
