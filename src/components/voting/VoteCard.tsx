@@ -30,7 +30,7 @@ export const VoteCard: React.FC<VoteCardProps> = ({
   status,
   results,
 }) => (
-  <Card hoverable pressable className="-z-10">
+  <Card hoverable pressable className="-z-10 hover:cursor-pointer">
     <div className="flex justify-between pb-4">
       <Title>{title}</Title>
       <VoteStatusBadge
