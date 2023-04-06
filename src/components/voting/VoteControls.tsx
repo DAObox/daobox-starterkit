@@ -58,14 +58,14 @@ export function VotePannel() {
   const [sortDirection, setSortDirection] = useState<SortDirection | null>();
   const [proposalStatus, setProposalStatus] = useState<ProposalStatus | null>();
   return (
-    <>
+    <div className="z-10">
       <VoteControls
         sortDirection={sortDirection}
         setSortDirection={setSortDirection}
         proposalStatus={proposalStatus}
         setProposalStatus={setProposalStatus}
       />
-      <Grid numCols={2} className="gap-4 !relative -z-50">
+      <Grid numCols={2} className="gap-4 !relative -z-10 mt-2">
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />
@@ -73,6 +73,6 @@ export function VotePannel() {
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />
       </Grid>
-    </>
+    </div>
   );
 }
