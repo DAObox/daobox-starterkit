@@ -24,9 +24,9 @@ const mockVote = {
 
 function VoteControls(props) {
   return (
-    <Card className="rounded-lg bg-white shadow-md p-6">
-      <div className="mt-5 flex space-x-2 justify-center sm:mt-0">
-        <Text className="flex start-0 pr-8">Vote Filters</Text>
+    <Card className="p-6 bg-white rounded-lg shadow-md">
+      <div className="flex justify-center mt-5 space-x-2 sm:mt-0">
+        <Text className="flex pr-8 start-0">Vote Filters</Text>
         <Dropdown
           value={props.sortDirection}
           setValue={(e) => props.setSortDirection(e)}
@@ -65,7 +65,7 @@ export function VotePannel() {
         proposalStatus={proposalStatus}
         setProposalStatus={setProposalStatus}
       />
-      <Grid numCols={2} className="gap-4">
+      <Grid numCols={2} className="gap-4 !relative -z-50">
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />
