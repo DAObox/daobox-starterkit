@@ -12,13 +12,13 @@ export function DaoHeader() {
 
   return (
     <section className="pb-6" aria-labelledby="profile-overview-title">
-      <div className="overflow-hidden rounded-lg bg-white shadow p-6">
+      <div className="p-6 overflow-hidden bg-white dark:!bg-gray-700 dark:border dark:border-white rounded-lg shadow">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Avatar size="lg" img={ipfsUriToUrl(data.metadata.avatar)}>
-            <p className="text-xl font-bold text-gray-900 sm:text-2xl">
+            <p className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
               {data.metadata.name}
             </p>
-            <p className="text-sm font-medium text-gray-600/75">
+            <p className="text-sm font-medium text-gray-600/75 dark:text-white">
               {data.ensDomain}
             </p>
           </Avatar>
@@ -32,7 +32,7 @@ export function DaoHeader() {
 
 function DaoHeaderButtons() {
   return (
-    <div className="mt-5 flex space-x-2 justify-center sm:mt-0">
+    <div className="flex justify-center mt-5 space-x-2 sm:mt-0">
       <Button variant="secondary">Deposit ETH</Button>
       <Button>Withdraw ETH</Button>
     </div>

@@ -20,7 +20,7 @@ export const VotesPieGraph = ({ votes }: { votes: any }) => {
     <Card className="max-w-lg">
       <Title>Vote Summary</Title>
       <DonutChart
-        className="mt-6 "
+        className="mt-6"
         variant="pie"
         data={voteSummary}
         category="number"
