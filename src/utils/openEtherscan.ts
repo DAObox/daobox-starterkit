@@ -1,5 +1,7 @@
+export const etherscanUrl = (address: string, network?: string) => {
+  return `https://${network === "mainnet" ? "" : `${network}`}.etherscan.io/address/${address}`;
+};
+
 export const openEtherscanPage = (address: string, network?: string) => {
-  network = network === "mainnet" ? "" : `${network}`;
-  const etherscanURL = `https://${network}.etherscan.io/address/${address}`;
-  window.open(etherscanURL, "_blank");
+  window.open(etherscanUrl(address, network), "_blank");
 };
