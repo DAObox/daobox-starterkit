@@ -1,11 +1,6 @@
 import React, { FC } from "react";
 import { Text, Flex, RangeBar } from "@tremor/react";
-
-interface VoteParameterProps {
-  percentageNeeded: number;
-  currentPercentage: number;
-  title: string;
-}
+import { VoteParameterProps } from "@Types/index";
 
 export const VoteParameter: FC<VoteParameterProps> = ({
   percentageNeeded,
@@ -14,7 +9,7 @@ export const VoteParameter: FC<VoteParameterProps> = ({
 }) => {
   const color = currentPercentage > percentageNeeded ? "emerald" : "rose";
   return (
-    <div className="space-y-2 mt-4">
+    <div className="mt-4 space-y-2">
       <Flex>
         <Text>{title}</Text>
         <Text>

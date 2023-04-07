@@ -1,14 +1,11 @@
 import React from "react";
 import { Badge } from "@tremor/react";
-import { getTimeLeft } from "../../utils/strings";
+import { getTimeLeft } from "@utils/strings";
 import { ProposalStatus } from "@aragon/sdk-client";
 import { ClockIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { VoteStatusProps } from "@Types/index";
 
-export function VoteStatusBadge({
-  startDate,
-  endDate,
-  status,
-}: VoteStatusProps) {
+export function VoteStatusBadge({ startDate, endDate, status }: VoteStatusProps) {
   const badgeColor = statusMap[status].color;
   const icon = statusMap[status].icon;
   const text =
@@ -21,12 +18,6 @@ export function VoteStatusBadge({
       {text}
     </Badge>
   );
-}
-
-export interface VoteStatusProps {
-  startDate: Date;
-  endDate: Date;
-  status: ProposalStatus;
 }
 
 export const statusMap: Record<ProposalStatus, { color: string; icon: any }> = {

@@ -1,17 +1,13 @@
-import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
-
-export interface CardProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  onClick?: () => void;
-  hoverable?: boolean;
-  pressable?: boolean;
-}
+import Link from "next/link";
+import { CardProps } from "@Types/index";
 
 export const Card: React.FC<CardProps> = ({
   children,
   onClick,
   className,
+  href,
   hoverable = false,
   pressable = false,
   ...rest
@@ -24,16 +20,13 @@ export const Card: React.FC<CardProps> = ({
     className
   );
 
-  const wrapperClassName = clsx(
-    "transition-transform duration-150 ease-in-out",
-    {
-      "transform scale-95": pressed && pressable,
-      "transform scale-105": hovered && hoverable,
-      "transform scale-100": !pressed && (!hovered || !hoverable),
-    }
-  );
+  const wrapperClassName = clsx("transition-transform duration-150 ease-in-out", {
+    "transform scale-95": pressed && pressable,
+    "transform scale-105": hovered && hoverable,
+    "transform scale-100": !pressed && (!hovered || !hoverable),
+  });
 
-  return (
+  const cardContent = (
     <div
       className={wrapperClassName}
       onMouseEnter={() => setHovered(true)}
@@ -49,5 +42,13 @@ export const Card: React.FC<CardProps> = ({
     >
       <div className={cardClassName}>{children}</div>
     </div>
+  );
+
+  return href ? (
+    <Link href={href} passHref={true}>
+      {cardContent}
+    </Link>
+  ) : (
+    cardContent
   );
 };

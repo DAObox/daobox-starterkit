@@ -1,47 +1,13 @@
 import React, { FC, useState } from "react";
-import { Dropdown } from "../inputs/SelectBox";
-
+import { Dropdown } from "@components/inputs";
 import { ProposalStatus } from "@aragon/sdk-client";
 import { Grid, Text } from "@tremor/react";
 import { VoteCard } from "./VoteCard";
-import { Card } from "../common/Card";
+import { Card } from "@components/common";
 import { SortDirection } from "@daobox/use-aragon";
+import { mockVote } from "../../mockData";
+import { VoteControlsProps } from "@Types/index";
 
-const now = new Date();
-
-const mockVote = {
-  id: "0x123",
-  title: "Some Vote Title",
-  description:
-    "ipsum lorem some description lorem ipsum astum fak lorem ipsumipsum lorem some description lorem ipsum astum fak lorem ipsumipsum lorem some description lorem ipsum astum fak lorem ipsum ",
-  startDate: new Date(now.getTime() + 5 * 60 * 1000),
-  endDate: new Date(),
-  status: ProposalStatus.ACTIVE,
-  results: {
-    yes: BigInt(420),
-    no: BigInt(69),
-    abstain: BigInt(21),
-  },
-};
-
-interface VoteControlsProps {
-  /** The current sort direction. */
-  sortDirection: SortDirection | null | undefined;
-  /** The function to set the sort direction. */
-  setSortDirection: (value: SortDirection | null | undefined) => void;
-  /** The current proposal status filter. */
-  proposalStatus: ProposalStatus | null | undefined;
-  /** The function to set the proposal status filter. */
-  setProposalStatus: (value: ProposalStatus | null | undefined) => void;
-}
-
-/**
- * A component that provides controls for filtering and sorting votes.
- * @param sortDirection - The current sort direction.
- * @param setSortDirection - The function to set the sort direction.
- * @param proposalStatus - The current proposal status filter.
- * @param setProposalStatus - The function to set the proposal status filter.
- */
 export const VoteControls: FC<VoteControlsProps> = ({
   sortDirection,
   setSortDirection,
@@ -49,9 +15,9 @@ export const VoteControls: FC<VoteControlsProps> = ({
   setProposalStatus,
 }) => {
   return (
-    <Card className="p-6 bg-white rounded-lg shadow-md">
-      <div className="flex justify-center mt-5 space-x-2 sm:mt-0">
-        <Text className="flex pr-8 start-0">Vote Filters</Text>
+    <Card className="rounded-lg bg-white p-6 shadow-md">
+      <div className="mt-5 flex justify-center space-x-2 sm:mt-0">
+        <Text className="start-0 flex pr-8">Vote Filters</Text>
         <Dropdown
           value={sortDirection}
           setValue={(e) => setSortDirection(e)}
@@ -90,7 +56,7 @@ export function VotePannel() {
         proposalStatus={proposalStatus}
         setProposalStatus={setProposalStatus}
       />
-      <Grid numCols={2} className="gap-4 !relative -z-10 mt-2">
+      <Grid numCols={2} className="!relative -z-10 mt-2 gap-4">
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />
         <VoteCard {...mockVote} />

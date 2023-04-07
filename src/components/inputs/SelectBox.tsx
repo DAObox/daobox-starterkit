@@ -1,19 +1,6 @@
 import React from "react";
 import { Dropdown as Dropdown_, DropdownItem } from "@tremor/react";
-
-interface Option<T> {
-  value: T;
-  text: string;
-  disabled?: boolean;
-}
-
-interface DropdownProps<T> {
-  options: Option<T>[];
-  value: T;
-  defaultValue?: T;
-  placeholder?: string;
-  setValue: (value: T) => void;
-}
+import { DropdownProps } from "@Types/index";
 
 export const Dropdown = <T,>({
   options,

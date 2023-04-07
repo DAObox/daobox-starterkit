@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-
-type Height = "xs" | "s" | "m" | "lg" | "xl";
+import { Height, SkeletonProps } from "@Types/index";
 
 const heightMap: Record<Height, string> = {
   xs: "h-16",
@@ -11,21 +10,13 @@ const heightMap: Record<Height, string> = {
   xl: "h-screen",
 };
 
-interface SkeletonProps {
-  height?: Height;
-  animated?: boolean;
-}
-
 export function Skeleton({ height = "m", animated = true }: SkeletonProps) {
   const resolvedHeight = heightMap[height] || heightMap.m;
 
   return (
     <div className={clsx({ "animate-pulse": animated })}>
       <div
-        className={clsx(
-          "bg-gray-200 rounded-md dark:bg-gray-700 w-full mb-4",
-          resolvedHeight
-        )}
+        className={clsx("mb-4 w-full rounded-md bg-gray-200 dark:bg-gray-700", resolvedHeight)}
       />
     </div>
   );
