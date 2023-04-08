@@ -1,25 +1,8 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { CategoryBar, Text, Title } from "@tremor/react";
-import { ProposalStatus } from "@aragon/sdk-client";
 import { VoteStatusBadge } from "./VoteStatusBadge";
-import { Card } from "../common/Card";
-
-interface Results {
-  yes: bigint;
-  no: bigint;
-  abstain: bigint;
-}
-
-interface VoteCardProps {
-  id: string;
-  title: string;
-  description: string;
-  startDate: Date;
-  endDate: Date;
-  status: ProposalStatus;
-  results: Results;
-}
+import { Card } from "@components/common";
+import { Results, VoteCardProps } from "@Types/index";
 
 export const VoteCard: React.FC<VoteCardProps> = ({
   id,
@@ -30,14 +13,10 @@ export const VoteCard: React.FC<VoteCardProps> = ({
   status,
   results,
 }) => (
-  <Card hoverable pressable className="-z-10 hover:cursor-pointer dark:bg-gray-700">
+  <Card hoverable pressable href={id} className="-z-10 hover:cursor-pointer dark:bg-gray-700">
     <div className="flex justify-between pb-4">
       <Title className="dark:text-white">{title}</Title>
-      <VoteStatusBadge
-        startDate={startDate}
-        endDate={endDate}
-        status={status}
-      />
+      <VoteStatusBadge startDate={startDate} endDate={endDate} status={status} />
     </div>
     <Text className="line-clamp-2 dark:text-white">{description}</Text>
     <VoteProgress {...results} />

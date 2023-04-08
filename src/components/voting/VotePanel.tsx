@@ -49,9 +49,9 @@ export const VoteControls: FC<VoteControlsProps> = ({
   setProposalStatus,
 }) => {
   return (
-    <Card className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-700">
+    <Card className="p-6 bg-white rounded-lg shadow-md">
       <div className="flex justify-center mt-5 space-x-2 sm:mt-0">
-        <Text className="flex pr-8 start-0 dark:text-white">Vote Filters</Text>
+        <Text className="flex pr-8 start-0">Vote Filters</Text>
         <Dropdown
           value={sortDirection}
           setValue={(e) => setSortDirection(e)}

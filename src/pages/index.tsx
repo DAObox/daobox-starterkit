@@ -1,13 +1,14 @@
 import React from "react";
-import { Layout } from "../components/Layout";
-import { Skeleton } from "../components/Skeleton";
-import { DaoHeader } from "../components/DaoHeader";
-import { VotePannel } from "../components/voting/VoteControls";
+
+import { Skeleton } from "../components/common/Skeleton";
+import { DaoHeader } from "../components/controls/DaoHeader";
+import { VotePannel } from "../components/voting/VotePanel";
 import { TokenDistribution } from "../components/charts/TokenDistribution";
+import { PageView } from "../components/layout";
 
 const Index = () => {
   return (
-    <Layout
+    <PageView
       rightColumn={
         <>
           <TokenDistribution />
@@ -16,9 +17,8 @@ const Index = () => {
       }
     >
       <DaoHeader />
-
       <VotePannel />
-    </Layout>
+    </PageView>
   );
 };
 
