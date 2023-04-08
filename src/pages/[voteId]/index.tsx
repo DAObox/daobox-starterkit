@@ -10,7 +10,7 @@ import { Card, AccountPill, ClampedText, Skeleton } from "@components/common";
 import { AccumulatedVotesChart, VoteSummary } from "@components/charts";
 import { mockVoteDetails, votes } from "../../mockData";
 
-import { VoteSettings } from "@components/stats/VoteSettings";
+import { VoteSettings } from "pages/stats/VoteSettings";
 import { calcPercentage, tokenValueFormatter } from "@utils/numbers";
 import { VoteProgressBar, VotingCTA } from "@components/voting";
 

@@ -14,6 +14,7 @@ interface AccountPillProps {
 
 export const AccountPill: React.FC<AccountPillProps> = ({ address, size = 6, className }) => {
   const { chain } = useNetwork();
+  console.log({ chain });
 
   const blockiesClassName = clsx("overflow-hidden rounded-2xl", className);
 

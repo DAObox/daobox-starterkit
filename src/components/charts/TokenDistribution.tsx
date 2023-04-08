@@ -8,6 +8,7 @@ import {
   Toggle,
   ToggleItem,
 } from "@tremor/react";
+import Blockies from "react-blockies";
 import { useState } from "react";
 import { ListBulletIcon, ChartPieIcon } from "@heroicons/react/24/outline";
 import { calcPercentage, formatMoney } from "@utils/numbers";
@@ -15,6 +16,7 @@ import { shortenHash } from "@utils/strings";
 import { Card } from "@components/common";
 import { mockDistributionData } from "../../mockData";
 import { TokenDistributionProps } from "@Types/index";
+import clsx from "clsx";
 
 export const TokenDistribution = ({
   top = 5,
