@@ -19,7 +19,6 @@ export function DaoHeader() {
             <p className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">{metadata.name}</p>
             <p className="text-sm font-medium text-gray-600/75 dark:text-white">{ensDomain}</p>
           </Avatar>
-          <button>Hi</button>
           <DaoHeaderButtons />
         </div>
       </div>
