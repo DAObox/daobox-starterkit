@@ -1,13 +1,17 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import Switch from "../modes/Switch";
+import toast, { Toaster } from "react-hot-toast"
+import Notification from "@components/Notifications/Notification";
 
 export function Navbar() {
   return (
     <header className="pb-24 bg-gradient-to-r from-sky-800 to-cyan-600">
       <div className="relative flex flex-wrap items-center justify-between px-8 mx-auto max-w-7xl">
         <Logo />
+        <Toaster />
         <div className="flex items-center space-x-2.5">
+          <button className="bg-gray-700 p-2.5 text-white rounded-md" onClick={() => toast.custom(<><Notification /></>, { duration: 10 })}>Toast Button</button>
           <Switch />
           <ConnectButton />
         </div>
@@ -19,7 +23,7 @@ export function Navbar() {
 
 export function Logo() {
   return (
-    <div className="left-0 flex-shrink-0 py-5  lg:static">
+    <div className="left-0 flex-shrink-0 py-5 lg:static">
       <Link href="/">
         <img
           className="w-auto h-8"
