@@ -5,7 +5,7 @@ import * as React from "react";
 import { WagmiConfig } from "wagmi";
 import "../styles/globals.css";
 import { AragonProvider } from "@daobox/use-aragon";
-import { chains, client } from "../wagmi";
+import { chains, client } from "../wagmi-helper";
 import AppShell from "../components/layout/AppShell";
 
 function App({ Component, pageProps }: AppProps) {
