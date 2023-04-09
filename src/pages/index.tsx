@@ -10,7 +10,6 @@ import { useNetwork } from "wagmi";
 
 const Index = () => {
   const { data } = useFetchDaos({ limit: 10 });
-  const { chain } = useNetwork();
 
   return (
     <PageView>
