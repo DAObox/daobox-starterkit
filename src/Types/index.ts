@@ -1,4 +1,4 @@
-import { ProposalStatus, SortDirection } from "@aragon/sdk-client";
+import { ProposalStatus, SortDirection, TokenVotingProposalListItem } from "@aragon/sdk-client";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface AccumulatedVotes {
@@ -26,15 +26,18 @@ export interface Results {
   abstain: bigint;
 }
 
-export interface VoteCardProps {
-  id: string;
-  title: string;
-  description: string;
-  startDate: Date;
-  endDate: Date;
-  status: ProposalStatus;
-  results: Results;
-}
+export type VoteCardProps = TokenVotingProposalListItem;
+
+// export interface VoteCardProps {
+//   id: string;
+//   title: string;
+//   description: string;
+//   startDate: Date;
+//   endDate: Date;
+//   status: ProposalStatus;
+//   results: Results;
+//   votes: TokenVotingProposalListItem[];
+// }
 
 export interface CardProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -73,9 +76,9 @@ export interface VoteParameterProps {
 
 export interface VoteControlsProps {
   sortDirection: SortDirection | null | undefined;
-  setSortDirection: (value: SortDirection | null | undefined) => void;
-  proposalStatus: ProposalStatus | null | undefined;
-  setProposalStatus: (value: ProposalStatus | null | undefined) => void;
+  setSortDirection: React.Dispatch<React.SetStateAction<SortDirection>>;
+  proposalStatus: ProposalStatus;
+  setProposalStatus: (value: ProposalStatus) => void;
 }
 
 export interface VoteProgressBarProps {

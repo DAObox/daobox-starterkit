@@ -1,12 +1,12 @@
 import React, { FC, useState } from "react";
 import { Dropdown } from "@components/inputs";
 import { ProposalStatus } from "@aragon/sdk-client";
-import { Grid, Text } from "@tremor/react";
+import { Button, Grid, Text } from "@tremor/react";
 import { VoteCard } from "./VoteCard";
-import { Card } from "@components/common";
-import { SortDirection } from "@daobox/use-aragon";
-import { mockVote } from "../../mockData";
+import { Card, Skeleton } from "@components/common";
+import { SortDirection, useFetchProposals } from "@daobox/use-aragon";
 import { VoteControlsProps } from "@Types/index";
+import { daoAddress } from "../../constants";
 
 export const VoteControls: FC<VoteControlsProps> = ({
   sortDirection,
@@ -46,8 +46,29 @@ export const VoteControls: FC<VoteControlsProps> = ({
 };
 
 export function VotePannel() {
-  const [sortDirection, setSortDirection] = useState<SortDirection | null>();
-  const [proposalStatus, setProposalStatus] = useState<ProposalStatus | null>();
+  const votesPerPage = 6;
+  const [sortDirection, setSortDirection] = useState<SortDirection>(SortDirection.DESC);
+  const [proposalStatus, setProposalStatus] = useState<ProposalStatus>(ProposalStatus.ACTIVE);
+
+  const [skip, setSkip] = useState<number>(0);
+
+  const { data } = useFetchProposals({
+    daoAddressOrEns: daoAddress,
+    direction: sortDirection,
+    limit: 6,
+    status: proposalStatus,
+    skip,
+  });
+
+  const handlePreviousPage = () => {
+    if (skip >= votesPerPage) setSkip((prevSkip) => prevSkip - votesPerPage);
+  };
+
+  const handleNextPage = () => {
+    if (data && data.length === votesPerPage) {
+      setSkip((prevSkip) => prevSkip + votesPerPage);
+    }
+  };
   return (
     <div className="z-10">
       <VoteControls
@@ -57,13 +78,28 @@ export function VotePannel() {
         setProposalStatus={setProposalStatus}
       />
       <Grid numCols={2} className="!relative -z-10 mt-2 gap-4">
-        <VoteCard {...mockVote} />
-        <VoteCard {...mockVote} />
-        <VoteCard {...mockVote} />
-        <VoteCard {...mockVote} />
-        <VoteCard {...mockVote} />
-        <VoteCard {...mockVote} />
+        {data ? (
+          <>
+            {data.map((vote) => (
+              <VoteCard key={vote.id} {...vote} />
+            ))}
+          </>
+        ) : (
+          <>
+            <Skeleton height="lg" animated={true} />
+            <Skeleton height="lg" animated={true} />
+          </>
+        )}
       </Grid>
+      <div className="mt-4 flex justify-center space-x-4">
+        <Button
+          disabled={skip === 0} // Disable the button if skip is 0
+          onClick={handlePreviousPage}
+        >
+          Previous
+        </Button>
+        <Button onClick={handleNextPage}>Next</Button>
+      </div>
     </div>
   );
 }

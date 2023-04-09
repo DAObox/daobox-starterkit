@@ -1,8 +1,4 @@
-export const shortenHash = (
-  hash: string,
-  charsStart = 4,
-  charsEnd?: number
-): string => {
+export const shortenHash = (hash: string, charsStart = 4, charsEnd?: number): string => {
   return `${hash.substring(0, charsStart + 2)}...${hash.substring(
     hash.length - (charsEnd || charsStart)
   )}`;
@@ -23,11 +19,7 @@ export function ipfsUriToUrl(ipfsUri: string | undefined) {
   }
 }
 
-function formatTimeDifference(
-  diffMilliseconds: number,
-  unit: string,
-  isFuture: boolean
-) {
+function formatTimeDifference(diffMilliseconds: number, unit: string, isFuture: boolean) {
   const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
   const diffMinutes = diffMilliseconds / (1000 * 60);
   const diffHours = diffMinutes / 60;
@@ -37,9 +29,7 @@ function formatTimeDifference(
       isFuture ? Math.round(diffMinutes) : -Math.round(diffMinutes),
       "minute"
     );
-    return (
-      (isFuture ? formattedMinutes.replace("in ", "") : formattedMinutes) + unit
-    );
+    return (isFuture ? formattedMinutes.replace("in ", "") : formattedMinutes) + unit;
   } else {
     const diffDays = diffHours / 24;
     const formattedDays = rtf.format(
@@ -55,19 +45,10 @@ export function getTimeLeft(startDate: Date, endDate: Date) {
   const isFutureStart = now < startDate;
   const isFutureEnd = now >= startDate && now < endDate;
   const diffMilliseconds =
-    (isFutureStart ? startDate : isFutureEnd ? endDate : now).getTime() -
-    now.getTime();
-  const unit = isFutureStart
-    ? " until start"
-    : isFutureEnd
-    ? " until end"
-    : " ago";
+    (isFutureStart ? startDate : isFutureEnd ? endDate : now).getTime() - now.getTime();
+  const unit = isFutureStart ? " until start" : isFutureEnd ? " until end" : " ago";
 
-  return formatTimeDifference(
-    diffMilliseconds,
-    unit,
-    isFutureStart || isFutureEnd
-  );
+  return formatTimeDifference(diffMilliseconds, unit, isFutureStart || isFutureEnd);
 }
 
 export const formatDateLabel = (date: string) => {

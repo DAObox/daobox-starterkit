@@ -126,7 +126,7 @@ const initialState = {
   resources: [],
   actions: [],
   pluginAddress: votingAddress,
-  startDate: new Date(new Date().getTime() + 1000 * 20),
+  startDate: new Date(0),
   endDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7),
 };
 
@@ -134,28 +134,60 @@ export const useWithdraw = () => {
   const [withdrawParams, setWithdrawParams] = useState(initialState);
   const addRecentTransaction = useAddRecentTransaction();
 
-  const { mutate, proposalStatus } = useNewProposal({
-    ...withdrawParams,
-    onProposalTransaction(proposalId: string) {
-      toast(`Transaction Sent: ${shortenHash(proposalId, 6)}`);
+  const { mutate, data, error, proposalId, proposalStatus } = useNewProposal({
+    // title: "ok this one should work",
+    // summary: "another test",
+    // description: "another test",
+    // pluginAddress: votingAddress,
+    resources: [],
+    // endDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7),
+    title: withdrawParams.title,
+    summary: withdrawParams.summary,
+    description: withdrawParams.description,
+    pluginAddress: withdrawParams.pluginAddress,
+    // startDate: withdrawParams.startDate,
+    endDate: withdrawParams.endDate,
+    // actions: withdrawParams.actions, // <----- this is whats breaking the code
+
+    // creatorVote: VoteValues.YES,
+    onProposalTransaction(txHash: string) {
+      toast(`Transaction Sent: ${shortenHash(txHash, 6)}`);
       addRecentTransaction({
-        hash: proposalId,
+        hash: txHash,
         description: "New Proposal",
       });
     },
     onSuccess(data) {
-      toast.success(`Transaction Sent: ${shortenHash(data.proposalTxHash!, 6)}`);
+      toast.success(`New Vote: ${shortenHash(data.proposalTxHash!, 6)}`);
     },
     onError(error) {
       toast.error(`Proposal Error: ${error.message}`);
     },
   });
 
+  // const { mutate, proposalStatus } = useNewProposal({
+  //   ...withdrawParams,
+  //   onProposalTransaction(txHash: string) {
+  //     toast(`Transaction Sent: ${shortenHash(txHash, 6)}`);
+  //     addRecentTransaction({
+  //       hash: txHash,
+  //       description: "New Proposal",
+  //     });
+  //   },
+  //   onSuccess(data) {
+  //     toast.success(`Transaction Sent: ${shortenHash(data.proposalTxHash!, 6)}`);
+  //   },
+  //   onError(error) {
+  //     toast.error(`Proposal Error: ${error.message}`);
+  //   },
+  // });
+
   // hooks/useWithdraw.ts (continued)
   const handleWithdraw = useCallback(
     (state: any) => {
+      console.log("handleWithdraw", state);
       setWithdrawParams(state);
-      mutate();
+      mutate?.();
     },
     [mutate]
   );
