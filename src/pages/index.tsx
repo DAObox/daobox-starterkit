@@ -22,7 +22,7 @@ const Index = () => {
             key={dao.address}
             hoverable
             pressable
-            href={`https://app.aragon.org/#/daos/${chain.network}/${dao.address}/dashboard`}
+            href={`https://app.aragon.org/#/daos/${chain?.name.toLowerCase()}/${dao.address}/dashboard`}
           >
             <Flex justifyContent="start" className="space-x-4">
               <Avatar bordered size="lg" img={ipfsUriToUrl(dao.metadata.avatar)} />

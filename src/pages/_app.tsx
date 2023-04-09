@@ -5,7 +5,7 @@ import * as React from "react";
 import { WagmiConfig } from "wagmi";
 import "../styles/globals.css";
 import { AragonProvider, Config } from "@daobox/use-aragon";
-import { chains, client } from "../wagmi";
+import { chains, client } from "../wagmi-helper";
 import AppShell from "../components/layout/AppShell";
 import { Toaster } from "react-hot-toast";
 
