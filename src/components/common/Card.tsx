@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { DetailedHTMLProps, HTMLAttributes, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { CardProps } from "@Types/index";
 
 export const Card: React.FC<CardProps> = ({
   children,
@@ -52,3 +51,11 @@ export const Card: React.FC<CardProps> = ({
     cardContent
   );
 };
+
+export interface CardProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  onClick?: () => void;
+  hoverable?: boolean;
+  pressable?: boolean;
+  href?: string;
+}
