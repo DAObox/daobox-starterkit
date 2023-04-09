@@ -4,9 +4,10 @@ import type { AppProps } from "next/app";
 import * as React from "react";
 import { WagmiConfig } from "wagmi";
 import "../styles/globals.css";
-import { AragonProvider } from "@daobox/use-aragon";
-import { chains, client } from "../wagmi";
+import { AragonProvider, Config } from "@daobox/use-aragon";
+import { chains, client } from "../wagmi-helper";
 import AppShell from "../components/layout/AppShell";
+import { Toaster } from "react-hot-toast";
 
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false);
@@ -20,6 +21,7 @@ function App({ Component, pageProps }: AppProps) {
               <Component {...pageProps} />
             </AppShell>
           )}
+          <Toaster />
         </AragonProvider>
       </RainbowKitProvider>
     </WagmiConfig>

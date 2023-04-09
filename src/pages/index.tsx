@@ -1,24 +1,40 @@
 import React from "react";
-import { Layout } from "../components/Layout";
-import { Skeleton } from "../components/Skeleton";
-import { DaoHeader } from "../components/DaoHeader";
-import { VotePannel } from "../components/voting/VoteControls";
-import { TokenDistribution } from "../components/charts/TokenDistribution";
+
+import { PageView } from "../components/layout";
+import { Card, Skeleton } from "@components/common";
+import { useFetchDaos } from "@daobox/use-aragon";
+import { Flex, Metric, Text } from "@tremor/react";
+import { Avatar } from "flowbite-react";
+import { ipfsUriToUrl } from "@utils/strings";
+import { useNetwork } from "wagmi";
 
 const Index = () => {
-  return (
-    <Layout
-      rightColumn={
-        <>
-          <TokenDistribution />
-          <Skeleton height="lg" animated={false} />
-        </>
-      }
-    >
-      <DaoHeader />
+  const { data } = useFetchDaos({ limit: 10 });
+  const { chain } = useNetwork();
 
-      <VotePannel />
-    </Layout>
+  return (
+    <PageView>
+      {!data ? (
+        <Skeleton animated={true} height="xl" />
+      ) : (
+        data?.map((dao) => (
+          <Card
+            key={dao.address}
+            hoverable
+            pressable
+            href={`https://app.aragon.org/#/daos/${chain?.name.toLowerCase()}/${dao.address}/dashboard`}
+          >
+            <Flex justifyContent="start" className="space-x-4">
+              <Avatar bordered size="lg" img={ipfsUriToUrl(dao.metadata.avatar)} />
+              <div className="truncate">
+                <Text>{dao.ensDomain}</Text>
+                <Metric className="truncate">{dao.metadata.name}</Metric>
+              </div>
+            </Flex>
+          </Card>
+        ))
+      )}
+    </PageView>
   );
 };
 
