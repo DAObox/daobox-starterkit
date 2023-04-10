@@ -52,6 +52,10 @@ export default function Balances() {
           balance = balance / Math.pow(10, metadata.decimals);
           balance = balance?.toFixed(2);
 
+          if (balance > 10000) {
+            balance = 10000+"+"
+          }
+
           data.push({
             name: metadata.name,
             value: balance,
