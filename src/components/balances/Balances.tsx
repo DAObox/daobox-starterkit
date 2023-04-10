@@ -107,7 +107,7 @@ export default function Balances({ address }: Props) {
                             <Bold>Balance</Bold>
                         </Text>
                         </Flex>
-                        <BarList data={data} className="mt-2 max-h-52 overflow-y-scroll scrollbar-hide" color="neutral" />
+                        <BarList data={data} className="mt-2 max-h-52 overflow-y-scroll scrollbar-hide" color={"" || undefined} />
                     </div>
                 : <div className="w-full min-h-[200px] bg-gray-200 rounded-md mt-2 flex flex-col items-center justify-center">
                     <p className="text-sm font-semibold text-black text-center">This dao holds no ERC20 token</p>
