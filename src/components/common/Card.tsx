@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({
 
   const cardContent = (
     <div
-      className={`${wrapperClassName}dark:!bg-gray-700`}
+      className={`${wrapperClassName}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
         setHovered(false);

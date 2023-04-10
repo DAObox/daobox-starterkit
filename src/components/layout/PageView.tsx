@@ -6,7 +6,7 @@ export function PageView({
   children: React.ReactNode;
 }) {
   return (
-    <main className="pb-8 -mt-24 dark:bg-gray-700">
+    <main className="pb-8 -mt-24 ">
       <div className="max-w-full px-4 mx-auto sm:px-6 lg:px-8">
         <div className="grid items-start grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
           {/* Left column */}

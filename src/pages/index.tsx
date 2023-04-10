@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Skeleton } from "../components/common/Skeleton";
+//import { Skeleton } from "../components/common/Skeleton";
 import { DaoHeader } from "../components/controls/DaoHeader";
 import { VotePannel } from "../components/voting/VotePanel";
 import { TokenDistribution } from "../components/charts/TokenDistribution";
@@ -14,7 +13,7 @@ const Index = () => {
         <>
           <TokenDistribution />
           {/* <Skeleton height="lg" animated={false} /> */}
-          <Balances />
+          <Balances address="0x7951c7ef839e26f63da87a42c9a87986507f1c07" />
         </>
       }
     >

@@ -13,12 +13,12 @@ export const VoteCard: React.FC<VoteCardProps> = ({
   status,
   results,
 }) => (
-  <Card hoverable pressable href={id} className="-z-10 hover:cursor-pointer dark:bg-gray-700">
+  <Card hoverable pressable href={id} className="-z-10 hover:cursor-pointer ">
     <div className="flex justify-between pb-4">
-      <Title className="dark:text-white">{title}</Title>
+      <Title className="">{title}</Title>
       <VoteStatusBadge startDate={startDate} endDate={endDate} status={status} />
     </div>
-    <Text className="line-clamp-2 dark:text-white">{description}</Text>
+    <Text className="line-clamp-2 ">{description}</Text>
     <VoteProgress {...results} />
   </Card>
 );
@@ -27,8 +27,8 @@ export const VoteProgress: React.FC<Results> = ({ yes, no, abstain }) => {
   return (
     <>
       <div className="flex justify-between mt-4 -mb-1">
-        <Text className="flex start-0 dark:text-white">YES ({yes.toString()})</Text>
-        <Text className="flex start-0 dark:text-white">NO ({no.toString()})</Text>
+        <Text className="flex start-0 ">YES ({yes.toString()})</Text>
+        <Text className="flex start-0 ">NO ({no.toString()})</Text>
       </div>
       <CategoryBar
         categoryPercentageValues={[Number(yes), Number(abstain), Number(no)]}

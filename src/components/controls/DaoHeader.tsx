@@ -13,11 +13,11 @@ export function DaoHeader() {
 
   return (
     <section className="pb-6" aria-labelledby="profile-overview-title">
-      <div className="p-6 overflow-hidden bg-white rounded-lg shadow dark:!bg-gray-700 dark:border dark:border-white">
+      <div className="p-6 overflow-hidden bg-white rounded-lg shadow">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Avatar size="lg" img={ipfsUriToUrl(metadata?.avatar)}>
-            <p className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">{metadata.name}</p>
-            <p className="text-sm font-medium text-gray-600/75 dark:text-white">{ensDomain}</p>
+            <p className="text-xl font-bold text-gray-900 sm:text-2xl ">{metadata.name}</p>
+            <p className="text-sm font-medium text-gray-600/75 ">{ensDomain}</p>
           </Avatar>
           <DaoHeaderButtons />
         </div>

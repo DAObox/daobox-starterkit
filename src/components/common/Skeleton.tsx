@@ -16,7 +16,7 @@ export function Skeleton({ height = "m", animated = true }: SkeletonProps) {
   return (
     <div className={clsx({ "animate-pulse": animated })}>
       <div
-        className={clsx("mb-4 w-full rounded-md bg-gray-200 dark:bg-gray-700", resolvedHeight)}
+        className={clsx("mb-4 w-full rounded-md bg-gray-200 ", resolvedHeight)}
       />
     </div>
   );

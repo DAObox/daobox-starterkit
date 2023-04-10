@@ -45,16 +45,16 @@ export const TokenDistribution = ({
   ];
 
   return (
-    <Card className="mx-auto p-6 dark:!bg-gray-700">
+    <Card className="mx-auto p-6">
       <Flex className="space-x-8" justifyContent="between" alignItems="center">
-        <Title className="dark:!text-white">Token Distribution</Title>
+        <Title className="">Token Distribution</Title>
         <Toggle defaultValue="chart" color="gray" onValueChange={(value) => setSelectedView(value)}>
           <ToggleItem value="chart" icon={ChartPieIcon} />
           <ToggleItem value="list" icon={ListBulletIcon} />
         </Toggle>
       </Flex>
 
-      <Metric className="mt-8 dark:!text-white">TKN {formatMoney(total)}</Metric>
+      <Metric className="mt-8 ">TKN {formatMoney(total)}</Metric>
       <Divider />
 
       {selectedView === "chart" ? (

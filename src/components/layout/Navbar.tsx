@@ -1,20 +1,12 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
-import Switch from "../modes/Switch";
-import toast, { Toaster } from "react-hot-toast"
-import Notification from "@components/Notifications/Notification";
 
 export function Navbar() {
-  const toaster = (toastId: string) => toast.custom(<><Notification id={toastId} /></>, { id: toastId })
   return (
     <header className="pb-24 bg-gradient-to-r from-sky-800 to-cyan-600">
       <div className="relative flex flex-wrap items-center justify-between px-8 mx-auto max-w-7xl">
         <Logo />
-        <Toaster />
         <div className="flex items-center space-x-2.5">
-          <button className="bg-gray-700 p-2.5 text-white rounded-md" onClick={() => toaster(Math.random().toString())}
-          >Toast Button</button>
-          <Switch />
           <ConnectButton />
         </div>
         <div className="w-full py-4 border-white border-opacity-20" />
