@@ -51,7 +51,7 @@ export default function Balances({ address }: Props) {
                     data.push({
                         key: nonZeroBalanceItem.key,
                         name: nonZeroBalanceItem.name,
-                        value: nonZeroBalanceItem.value,
+                        value: Number(nonZeroBalanceItem.value),
                         href: "",
                         icon: function Icon() {
                             return <div className="pr-2"><Image src={nonZeroBalanceItem.icon} alt="logo" width={25} height={25} /></div>
@@ -64,7 +64,7 @@ export default function Balances({ address }: Props) {
                     data.push({
                         key: nonZeroBalanceItem.key,
                         name: nonZeroBalanceItem.name,
-                        value: nonZeroBalanceItem.value,
+                        value: Number(nonZeroBalanceItem.value),
                         href: "",
                         icon: function Icon() {
                             return <div className="pr-2"><Image src={"/ethereum.png"} alt="logo" width={25} height={25} /></div>
@@ -98,7 +98,7 @@ export default function Balances({ address }: Props) {
                 </div> : 
                 empty ? <div className="w-full min-h-[200px] bg-gray-200 animate-pulse rounded-md mt-2" /> : 
                 data.length > 0 ?
-                    <div className={(empty && data.length > 0) ? "hidden" : ""}>
+                    <div className={(empty && data.length > 0) ? "hidden" : ""} onLoad={() => document.querySelectorAll(".tremor-BarList-bar").forEach(element => element.classList.remove("bg-blue-100"))}>
                         <Flex className="mt-4">
                         <Text>
                             <Bold>Token</Bold>
@@ -107,7 +107,7 @@ export default function Balances({ address }: Props) {
                             <Bold>Balance</Bold>
                         </Text>
                         </Flex>
-                        <BarList data={data} className="mt-2 max-h-52 overflow-y-scroll scrollbar-hide" color={undefined} />
+                        <BarList data={data} className="mt-2 max-h-52 overflow-y-scroll scrollbar-hide bar" color={undefined} />
                     </div>
                 : <div className="w-full min-h-[200px] bg-gray-200 rounded-md mt-2 flex flex-col items-center justify-center">
                     <p className="text-sm font-semibold text-black text-center">This dao holds no ERC20 token</p>
